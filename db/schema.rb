@@ -11,28 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917000538) do
-
-  create_table "follows", id: false, force: :cascade do |t|
-    t.integer "follower_id", limit: 8, null: false
-    t.integer "followee_id", limit: 8, null: false
-  end
-
-  add_index "follows", ["follower_id"], name: "follower_id", using: :btree
-
-  create_table "tweets", id: false, force: :cascade do |t|
-    t.integer "user_id", limit: 8,     null: false
-    t.text    "post",    limit: 65535, null: false
-  end
-
-  add_index "tweets", ["user_id"], name: "user_id", using: :btree
+ActiveRecord::Schema.define(version: 20150924221345) do
 
   create_table "users", force: :cascade do |t|
-    t.string "name",     limit: 50,  null: false
-    t.string "username", limit: 100, null: false
-    t.string "password", limit: 100, null: false
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "password_digest", limit: 255
   end
 
-  add_foreign_key "follows", "users", column: "follower_id", name: "follows_ibfk_1", on_delete: :cascade
-  add_foreign_key "tweets", "users", name: "tweets_ibfk_1", on_delete: :cascade
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
 end
