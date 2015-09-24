@@ -5,5 +5,21 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    = render 'layouts/shim'
   %body
-    = yield
+    = render 'layouts/header'
+    .container
+      =yield
+      = render 'layouts/footer'
+     
+  -#%body
+  -#%header.navbar.navbar-fixed-top.navbar-inverse
+  -#  .container
+  -#    =link_to "Twitter Demo App", '#', id: "logo"
+  -#    %nav
+  -#      %ul.nav.navbar-nav.navbar-right
+  -#        %li= link_to "Home",   '#'
+  -#        %li= link_to "Help",   '#'
+  -#        %li= link_to "Log in", '#'
+  -#%container       
+  -#  =yield
