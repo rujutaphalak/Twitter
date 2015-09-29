@@ -1,4 +1,9 @@
 pooja:
   name: Pooja Rane
   email: pooja@gmail.com
+  password_digest: =User.digest('password
+
+rujuta:
+  name: rujuta 
+  email: rujuta@gmail.com
   password_digest: =User.digest('password')
